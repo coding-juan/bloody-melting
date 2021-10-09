@@ -8,8 +8,8 @@ jobs:
   publish_on_win:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2       
-      - uses: actions/setup-node@master
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: 12.18.3
       - name: install dependencies
