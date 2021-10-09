@@ -10,7 +10,8 @@
     "build:react": "set NODE_ENV=production && webpack --config webpack.react.config.js --mode production",
     "build": "npm run build:electron && npm run build:react",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder --win portable"
+    "dist": "electron-builder --win portable",
+    "publish": "electron-builder --win -p always"
   },
   "keywords": [],
   "author": "whereujon",
@@ -21,6 +22,7 @@
       "node_modules/",
       "package.json"
     ],
+    "appId": "com.whereujon.bloodymelting",
     "productName": "Bloody Melting",
     "directories": {
       "output": "dist"
@@ -33,7 +35,28 @@
           "**/*"
         ]
       }
-    ]
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "coding-juan",
+        "repo": "bloody-melting"
+      }
+    ],
+    "win": {
+      "publish": [
+        "github"
+      ],
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
