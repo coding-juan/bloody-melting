@@ -40,7 +40,8 @@
       {
         "provider": "github",
         "owner": "coding-juan",
-        "repo": "bloody-melting"
+        "repo": "bloody-melting",
+        "releaseType": "prerelease"
       }
     ],
     "win": {

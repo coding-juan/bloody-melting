@@ -9,11 +9,20 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Make envfile
+        env:
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+        run: |
+          echo STEAM_API_KEY="$STEAM_API_KEY" > .\environment\.evn
       - uses: actions/setup-node@v1
         with:
           node-version: 12.18.3
       - name: install dependencies
         run: npm install
+      - name: build react
+        run: npm run build:react
+      - name: build electron
+        run: npm run build:electron
       - name: publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
