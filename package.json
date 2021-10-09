@@ -1,0 +1,69 @@
+{
+  "name": "bloody-melting",
+  "version": "1.0.0",
+  "description": "Generate MBTL invite link",
+  "main": "./dist/main.js",
+  "scripts": {
+    "dev:electron": "set NODE_ENV=development && webpack --config webpack.electron.config.js --mode development && electron .",
+    "dev:react": "set NODE_ENV=development && webpack-dev-server --config webpack.react.config.js --mode development",
+    "build:electron": "set NODE_ENV=production && webpack --config webpack.electron.config.js --mode production",
+    "build:react": "set NODE_ENV=production && webpack --config webpack.react.config.js --mode production",
+    "build": "npm run build:electron && npm run build:react",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win portable"
+  },
+  "keywords": [],
+  "author": "whereujon",
+  "license": "ISC",
+  "build": {
+    "files": [
+      "dist/",
+      "node_modules/",
+      "package.json"
+    ],
+    "productName": "Bloody Melting",
+    "directories": {
+      "output": "dist"
+    },
+    "extraFiles": [
+      {
+        "from": "build/",
+        "to": "resources",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^5.2.7",
+    "dotenv-webpack": "^7.0.3",
+    "electron": "^8.2.2",
+    "electron-builder": "^22.10.5",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss": "^8.3.8",
+    "postcss-loader": "^4.2.0",
+    "style-loader": "^3.3.0",
+    "typings-for-css-modules-loader": "^1.7.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "axios": "^0.22.0",
+    "dotenv": "^10.0.0",
+    "electron-store": "^8.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
