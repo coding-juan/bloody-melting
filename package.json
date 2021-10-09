@@ -41,7 +41,8 @@
         "provider": "github",
         "owner": "coding-juan",
         "repo": "bloody-melting",
-        "releaseType": "prerelease"
+        "releaseType": "prerelease",
+        "vPrefixedTagName": true
       }
     ],
     "win": {
