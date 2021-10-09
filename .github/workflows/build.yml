@@ -11,5 +11,9 @@ jobs:
         node-version: 12.18.3
     - name: install dependencies
       run: npm install
-    - name: build
+    - name: build react
+      run: npm run build:react
+    - name: build electron
+      run: npm run build:electron
+    - name: build exe
       run: npm run dist
