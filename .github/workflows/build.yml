@@ -11,7 +11,7 @@ jobs:
         STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
       run: |
         echo STEAM_API_KEY="$STEAM_API_KEY" > .\environment\.evn
-        dir /a-D /S /B .
+        ls -R .
     - uses: actions/setup-node@v1
       with:
         node-version: 12.18.3
