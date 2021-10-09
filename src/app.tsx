@@ -71,6 +71,13 @@ const App = () => {
     remote.BrowserWindow.getFocusedWindow()?.minimize();
   }
 
+  function clearData() {
+    setUserName('');
+    setUserId('');
+    setLastInvite('');
+    store.clear();
+  }
+
   return (
     <div className="parent">
       <div
@@ -100,7 +107,7 @@ const App = () => {
       
       <div className="userName">
         <div className="userId user-name-tooltip">
-          <input type="text" title="" placeholder="Your Steam login username" required  value={userName} onKeyUp={onKey} onChange={e => setUserName(e.target.value)}/>
+          <input className={(streamerMode ? 'blur' : '')} type="text" title="" placeholder="Your Steam login username" required  value={userName} onKeyUp={onKey} onChange={e => setUserName(e.target.value)}/>
         </div>
 
         <div className="user-id">
@@ -118,16 +125,21 @@ const App = () => {
       </div>
 
       <div className="inviteLink" disabled={!lastInvite}>
-        <input type="text" value={lastInvite ? lastInvite : 'No invite link generated yet.'} disabled/>
+        <input className={(streamerMode && lastInvite ? 'blur' : '')} type="text" value={lastInvite ? lastInvite : 'No invite link generated yet.'} disabled/>
         <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="copy" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z" ></path></svg>
       </div>
 
-      <a className="removeData remove-data-tooltip">
+      <a className="removeData remove-data-tooltip" onClick={clearData}>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path></svg>
       </a>
       
-      <label htmlFor="">Streamer Mode</label>
-      <input type="checkbox" defaultChecked={streamerMode} onChange={e => setStreamerMode(e.target.checked)}/>
+      <div className="streamerMode">
+        <span>Streamer mode:</span>
+        <input type="checkbox" id={`switch-streamer`} checked={streamerMode} onChange={() => setStreamerMode(!streamerMode)} />
+        <label htmlFor={'switch-streamer'}>
+          <span/>
+        </label>
+      </div>
     </div>
   )
 }
