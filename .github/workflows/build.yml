@@ -10,7 +10,7 @@ jobs:
       env:
         STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
       run: |
-        echo STEAM_API_KEY="$STEAM_API_KEY" > .\environment\.evn
+        echo STEAM_API_KEY="$STEAM_API_KEY" > .\environment\.env
         ls -R .
     - uses: actions/setup-node@v1
       with:
